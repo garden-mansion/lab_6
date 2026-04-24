@@ -4,7 +4,10 @@ import { Navbar } from './components/Navbar';
 function App() {
   return (
     <div>
-      <Navbar />
+      <Navbar
+        activeNavbarItemIndex={0}
+        navItems={['Главная', 'Cписок зданий', 'Контакты']}
+      />
     </div>
   );
 }
