@@ -2,6 +2,7 @@ import './styles/App.css';
 import { Navbar } from './components/Navbar';
 import { Gallery } from './components/Gallery';
 import { Content } from './components/Content';
+import { Footer } from './components/Footer';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       />
       <Gallery />
       <Content />
+      <Footer />
     </div>
   );
 }

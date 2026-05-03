@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import type { FC } from 'react';
+import { styled } from '@mui/material/styles';
 
 interface BuildCardProps {
   building: {
@@ -13,11 +14,20 @@ interface BuildCardProps {
     title: string;
     description: string[];
   };
+  index: number;
 }
 
-export const BuildCard: FC<BuildCardProps> = ({ building }) => {
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  color: theme.palette.text.secondary,
+  textAlign: 'justify',
+  marginBottom: theme.spacing(1.5), // отступ между абзацами
+}));
+
+export const BuildCard: FC<BuildCardProps> = ({ building, index }) => {
   return (
-    <Card sx={{ display: 'flex' }}>
+    <Card
+      sx={{ display: 'flex', flexDirection: index % 2 ? 'row' : 'row-reverse' }}
+    >
       <CardMedia component="img" alt={building.title} image={building.img} />
       <Box>
         <CardContent>
@@ -25,9 +35,7 @@ export const BuildCard: FC<BuildCardProps> = ({ building }) => {
             {building.title}
           </Typography>
           {building.description.map((item, ind) => (
-            <Typography key={ind} variant="body2">
-              {item}
-            </Typography>
+            <StyledTypography key={ind}>{item}</StyledTypography>
           ))}
         </CardContent>
         <CardActions sx={{ justifyContent: 'end' }}>
