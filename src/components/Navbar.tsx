@@ -1,5 +1,5 @@
 import AppBar from '@mui/material/AppBar';
-import { FC } from 'react';
+import type { FC } from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
