@@ -1,22 +1,26 @@
 import type { FC } from 'react';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
+import { StyledToolbar } from './StyledToolbar';
 
 export const Footer: FC = () => {
   return (
-    <Container maxWidth="xl">
-      <Box
-        sx={{
-          padding: '0.5rem',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: 'lightgrey',
-        }}
-      >
-        <Typography variant="h6">made by Kon Vladislav</Typography>
-      </Box>
-    </Container>
+    <AppBar
+      position="static"
+      sx={{
+        boxShadow: 0,
+        bgcolor: 'transparent',
+        mt: '28px',
+      }}
+    >
+      <Container maxWidth="xl">
+        <StyledToolbar sx={{ justifyContent: 'center' }}>
+          <Typography variant="h6" sx={{ color: '#5d8aa8' }}>
+            made by Kon Vladislav
+          </Typography>
+        </StyledToolbar>
+      </Container>
+    </AppBar>
   );
 };

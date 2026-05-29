@@ -18,7 +18,7 @@ function Building() {
     if (!building) {
         return (
             <div>
-                <Navbar active={-1} navItems={NAV_ITEMS} />
+                <Navbar active={0} navItems={NAV_ITEMS} />
                 <Container maxWidth="lg" sx={{ mt: 4 }}>
                     <Typography variant="h4">Здание не найдено</Typography>
                     <Link to="/">Вернуться на главную</Link>
@@ -29,7 +29,7 @@ function Building() {
 
     return (
         <div>
-            <Navbar active={-1} navItems={NAV_ITEMS} />
+            <Navbar active={0} navItems={NAV_ITEMS} />
             <Container maxWidth="lg" sx={{ mt: 4 }}>
                 <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 3 }}>
                     <LinkMui component={Link} underline="hover" color="inherit" to="/">

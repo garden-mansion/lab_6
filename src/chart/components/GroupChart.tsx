@@ -31,6 +31,13 @@ function GroupChart({ data }: GroupChartProps) {
             return { dataKey: item[0], label: item[0] };
         });
 
+    const showBarLabel = isBar && seriesY.length === 1;
+
+    const chartSeries = seriesY.map(s => ({
+        ...s,
+        valueFormatter: (v: number | null) => v !== null ? `${v} м` : '',
+    }));
+
     const chartSetting = {
         yAxis: [{ label: 'Высота (м)' }],
         height: 400,
@@ -43,7 +50,17 @@ function GroupChart({ data }: GroupChartProps) {
                 <BarChart
                     dataset={data}
                     xAxis={[{ scaleType: 'band', dataKey: 'Группа' }]}
-                    series={seriesY}
+                    series={
+                        showBarLabel
+                            ? chartSeries.map(s => ({
+                                  ...s,
+                                  barLabel: (v) => {
+                                    console.log(v);
+                                    return v !== null ? `${v.value}` : ''
+                                  },
+                              }))
+                            : chartSeries
+                    }
                     slotProps={{
                         legend: {
                             position: { vertical: 'bottom', horizontal: 'center' },
@@ -55,7 +72,7 @@ function GroupChart({ data }: GroupChartProps) {
                 <LineChart
                     dataset={data}
                     xAxis={[{ scaleType: 'band', dataKey: 'Группа' }]}
-                    series={seriesY}
+                    series={chartSeries}
                     slotProps={{
                         legend: {
                             position: { vertical: 'bottom', horizontal: 'center' },

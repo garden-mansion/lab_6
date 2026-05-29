@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Box from '@mui/material/Box';
 import Main from './main/Main';
 import List from './list/List';
 import Building from './building/Building';
@@ -8,13 +9,17 @@ import { Footer } from './components/Footer';
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/list" element={<List />} />
-        <Route path="/building/:id" element={<Building />} />
-        <Route path="/chart" element={<Chart />} />
-      </Routes>
-      <Footer />
+      <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <Box sx={{ flex: 1 }}>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/list" element={<List />} />
+            <Route path="/building/:id" element={<Building />} />
+            <Route path="/chart" element={<Chart />} />
+          </Routes>
+        </Box>
+        <Footer />
+      </Box>
     </BrowserRouter>
   );
 }
