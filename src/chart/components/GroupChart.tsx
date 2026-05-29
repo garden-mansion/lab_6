@@ -55,7 +55,6 @@ function GroupChart({ data }: GroupChartProps) {
                             ? chartSeries.map(s => ({
                                   ...s,
                                   barLabel: (v) => {
-                                    console.log(v);
                                     return v !== null ? `${v.value}` : ''
                                   },
                               }))
