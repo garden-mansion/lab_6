@@ -12,16 +12,19 @@ import { MenuList } from '@mui/material';
 import { CloseRounded } from '@mui/icons-material';
 import { StyledToolbar } from './StyledToolbar';
 import { NavbarButton } from './NavbarButton';
+import { Link } from 'react-router-dom';
 
-interface NavbarProps {
-  activeNavbarItemIndex: number;
-  navItems: string[];
+interface NavItem {
+  label: string;
+  path: string;
 }
 
-export const Navbar: FC<NavbarProps> = ({
-  activeNavbarItemIndex,
-  navItems,
-}) => {
+interface NavbarProps {
+  active: number;
+  navItems: NavItem[];
+}
+
+export const Navbar: FC<NavbarProps> = ({ active, navItems }) => {
   const [open, setOpen] = useState<boolean>(false);
   const toggleDrawer = (newValue: boolean) => () => setOpen(newValue);
 
@@ -41,12 +44,13 @@ export const Navbar: FC<NavbarProps> = ({
           </Typography>
 
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            {navItems.map((navItem, index) => (
+            {navItems.map((item, index) => (
               <NavbarButton
                 key={index}
-                isActive={index === activeNavbarItemIndex}
+                isActive={index === active}
+                to={item.path}
               >
-                {navItem}
+                {item.label}
               </NavbarButton>
             ))}
           </Box>
@@ -62,13 +66,17 @@ export const Navbar: FC<NavbarProps> = ({
                     <CloseRounded />
                   </IconButton>
                 </Box>
-                {navItems.map((navItem, index) => (
-                  <MenuItem
+                {navItems.map((item, index) => (
+                  <Link
                     key={index}
-                    selected={index === activeNavbarItemIndex}
+                    to={item.path}
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                    onClick={toggleDrawer(false)}
                   >
-                    {navItem}
-                  </MenuItem>
+                    <MenuItem selected={index === active}>
+                      {item.label}
+                    </MenuItem>
+                  </Link>
                 ))}
               </MenuList>
             </Drawer>

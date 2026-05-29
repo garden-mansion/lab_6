@@ -1,20 +1,21 @@
-import './styles/App.css';
-import { Navbar } from './components/Navbar';
-import { Gallery } from './components/Gallery';
-import { Content } from './components/Content';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Main from './main/Main';
+import List from './list/List';
+import Building from './building/Building';
+import Chart from './chart/Chart';
 import { Footer } from './components/Footer';
 
 function App() {
   return (
-    <div>
-      <Navbar
-        activeNavbarItemIndex={0}
-        navItems={['Главная', 'Cписок зданий', 'Контакты']}
-      />
-      <Gallery />
-      <Content />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/list" element={<List />} />
+        <Route path="/building/:id" element={<Building />} />
+        <Route path="/chart" element={<Chart />} />
+      </Routes>
       <Footer />
-    </div>
+    </BrowserRouter>
   );
 }
 

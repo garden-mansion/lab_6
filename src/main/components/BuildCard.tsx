@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import type { FC } from 'react';
 import { styled } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 
 interface BuildCardProps {
   building: {
@@ -20,13 +21,19 @@ interface BuildCardProps {
 const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.secondary,
   textAlign: 'justify',
-  marginBottom: theme.spacing(1.5), // отступ между абзацами
+  marginBottom: theme.spacing(1.5),
 }));
 
 export const BuildCard: FC<BuildCardProps> = ({ building, index }) => {
   return (
     <Card
-      sx={{ display: 'flex', flexDirection: index % 2 ? 'row' : 'row-reverse' }}
+      sx={{
+        display: 'flex',
+        flexDirection: {
+          sm: index % 2 ? 'row' : 'row-reverse',
+          xs: 'column',
+        },
+      }}
     >
       <CardMedia component="img" alt={building.title} image={building.img} />
       <Box>
@@ -38,8 +45,17 @@ export const BuildCard: FC<BuildCardProps> = ({ building, index }) => {
             <StyledTypography key={ind}>{item}</StyledTypography>
           ))}
         </CardContent>
-        <CardActions sx={{ justifyContent: 'end' }}>
-          <Button size="small">Подробнее</Button>
+        <CardActions
+          sx={{
+            justifyContent: {
+              sm: index % 2 ? 'end' : 'start',
+              xs: 'center',
+            },
+          }}
+        >
+          <Button size="small" component={Link} to={"/building/" + index}>
+            Подробнее
+          </Button>
         </CardActions>
       </Box>
     </Card>

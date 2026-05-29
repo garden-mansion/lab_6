@@ -1,6 +1,6 @@
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import structures from '../data';
+import structures from '../../data';
 import type { FC } from 'react';
 import { BuildCard } from './BuildCard';
 
