@@ -4,16 +4,23 @@ import {
   verticalListSortingStrategy,
   arrayMove,
 } from '@dnd-kit/sortable';
-import { useState, type FC } from 'react';
+import { type FC } from 'react';
 import List from '@mui/material/List';
-import { SortableItem } from './SortableItem';
+import { SortableItem } from '../components/SortableItem';
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState } from '../../store';
+import { setDraggedItems } from './quizSlice';
 
 interface ComponentProps {
-  answers: string[];
+  index: number;
 }
 
-export const SortableList: FC<ComponentProps> = ({ answers }) => {
-  const [draggedItems, setDraggedItems] = useState<string[]>(answers);
+export const SortableList: FC<ComponentProps> = ({ index }) => {
+  const dispatch = useDispatch();
+  const currentAnswers = useSelector(
+    (state: RootState) => state.listsReducer.lists[index],
+  );
+  const draggedItems = currentAnswers || [];
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -22,11 +29,10 @@ export const SortableList: FC<ComponentProps> = ({ answers }) => {
     }
 
     if (active.id !== over.id) {
-      setDraggedItems((draggedItems) => {
-        const oldIndex = draggedItems.indexOf(active.id.toString());
-        const newIndex = draggedItems.indexOf(over.id.toString());
-        return arrayMove(draggedItems, oldIndex, newIndex);
-      });
+      const oldIndex = draggedItems.indexOf(active.id.toString());
+      const newIndex = draggedItems.indexOf(over.id.toString());
+      const newList = arrayMove(draggedItems, oldIndex, newIndex);
+      dispatch(setDraggedItems({ index, items: newList }));
     }
   };
 

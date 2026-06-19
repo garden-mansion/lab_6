@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Quiz } from './components/Quiz';
+import { Quiz } from './features/Quiz';
 import { Box } from '@mui/material';
 import { Navbar } from '../components/Navbar';
 import { NAV_ITEMS } from '../navItems';
