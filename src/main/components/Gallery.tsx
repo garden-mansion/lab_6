@@ -28,7 +28,7 @@ export const Gallery: FC = () => {
           {imgData.map((item, index) => (
             <Link
               key={item.img}
-              to={"/building/" + index}
+              to={'/building/' + index}
               style={{ textDecoration: 'none', display: 'block' }}
             >
               <ImageListItem>

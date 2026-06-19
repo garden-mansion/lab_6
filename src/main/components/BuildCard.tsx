@@ -53,7 +53,7 @@ export const BuildCard: FC<BuildCardProps> = ({ building, index }) => {
             },
           }}
         >
-          <Button size="small" component={Link} to={"/building/" + index}>
+          <Button size="small" component={Link} to={'/building/' + index}>
             Подробнее
           </Button>
         </CardActions>

@@ -8,7 +8,11 @@ interface NavbarButtonProps {
   to: string;
 }
 
-export const NavbarButton: FC<NavbarButtonProps> = ({ isActive, children, to }) => (
+export const NavbarButton: FC<NavbarButtonProps> = ({
+  isActive,
+  children,
+  to,
+}) => (
   <Button
     component={Link}
     to={to}

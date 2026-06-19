@@ -11,10 +11,10 @@ function SearchBar() {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState('');
 
-  const titles = structures.map(s => s.title);
+  const titles = structures.map((s) => s.title);
 
   const handleSubmit = (value: string) => {
-    const index = structures.findIndex(s => s.title === value);
+    const index = structures.findIndex((s) => s.title === value);
     if (index !== -1) {
       navigate(`/building/${index}`);
     }

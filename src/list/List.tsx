@@ -1,6 +1,6 @@
-import { Navbar } from "../components/Navbar";
+import { Navbar } from '../components/Navbar';
 import { NAV_ITEMS } from '../navItems';
-import BuildingsGrid from "./components/BuildingsGrid";
+import BuildingsGrid from './components/BuildingsGrid';
 
 function List() {
   return (

@@ -1,7 +1,7 @@
-import { Navbar } from "../components/Navbar";
-import { Gallery } from "./components/Gallery";
-import { Content } from "./components/Content";
-import SearchBar from "./components/SearchBar";
+import { Navbar } from '../components/Navbar';
+import { Gallery } from './components/Gallery';
+import { Content } from './components/Content';
+import SearchBar from './components/SearchBar';
 import { NAV_ITEMS } from '../navItems';
 
 function Main() {
